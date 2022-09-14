@@ -2,7 +2,8 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 const images = galleryItems.reduce(
   (acc, { preview, description, original }) => {
-    acc += `<a class="gallery__link" href="#" target="_self"> <img  class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" /> </a>`;
+    acc += `<div class="gallery__item">
+<a class="gallery__link" href="#" target="_self"> <img  class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" /> </a> </div>`;
     return acc;
   },
   ''
