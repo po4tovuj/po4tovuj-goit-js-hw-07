@@ -1,22 +1,15 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const images = galleryItems.reduce(
-  (acc, { preview, description, original }) => {
-    acc += `<div class="gallery__item">
-<a class="gallery__link" href="#" target="_self"> <img  class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" /> </a> </div>`;
-    return acc;
-  },
-  ''
-);
+const images = galleryItems
+  .map(({ preview, description, original }) => {
+    return `<li class="gallery__item"><a class="gallery__link" href="#" target="_self"><img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" /></a></li>`;
+  })
+  .join('');
 let instance;
 
 const container = document.querySelector('.gallery');
-container.insertAdjacentHTML('afterbegin', '<ul></ul>');
-container.insertAdjacentHTML(
-  'afterbegin',
-  `  ${images} </a>
-`
-);
+container.insertAdjacentHTML('afterbegin', images);
+console.log('images: ', images);
 
 const closeOnEcapeClick = (e) => {
   if (instance.visible() && e.key === 'Escape') {
